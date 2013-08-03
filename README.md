@@ -1,2 +1,2 @@
-chatserver
+chatserver a
 ==========
