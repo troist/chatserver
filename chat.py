@@ -17,20 +17,31 @@ from twisted.internet.endpoints import TCP4ClientEndpoint, connectProtocol
 
 ##########################################
 
-class Greeter(Protocol):
+chatServer = "localhost"
+PORT = 1234
+
+##########################################
+
+class ClientProtocol(Protocol):
+
     def sendMessage(self, msg):
-        self.transport.write("MESSAGE %s\n" % msg)
+        self.transport.write("%s\n" % msg)
+
+    def dataReceived(self, data):
+        print data
+
 
 def gotProtocol(p):
     p.sendMessage("Hello")
     reactor.callLater(1, p.sendMessage, "This is sent in a second")
-    reactor.callLater(2, p.transport.loseConnection)
+    #eactor.callLater(2, p.transport.loseConnection)
 
 ##########################################
 
 if __name__ == '__main__':
     sysUtils.setFlags()
-    point = TCP4ClientEndpoint(reactor, "localhost", 1234)
-    d = connectProtocol(point, Greeter())
+
+    point = TCP4ClientEndpoint(reactor, chatServer, PORT)
+    d = connectProtocol(point, ClientProtocol())
     d.addCallback(gotProtocol)
     reactor.run()
