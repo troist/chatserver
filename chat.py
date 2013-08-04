@@ -34,4 +34,3 @@ if __name__ == '__main__':
     d = connectProtocol(point, Greeter())
     d.addCallback(gotProtocol)
     reactor.run()
-    print "Chat client running"

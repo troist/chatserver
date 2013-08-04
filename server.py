@@ -20,28 +20,14 @@ PORT = 1234
 
 ##########################################
 
-class Echo(Protocol):
-
-    def __init__(self, factory):
-        self.factory = factory
-
-    def connectionMade(self):
-        self.factory.numProtocols = self.factory.numProtocols+1 
-        self.transport.write(
-            "Welcome! There are currently %d open connections.\n" %
-            (self.factory.numProtocols,))
-
-    def connectionLost(self, reason):
-        self.factory.numProtocols = self.factory.numProtocols-1
-
+class Echo(protocol.Protocol):
     def dataReceived(self, data):
         self.transport.write(data)
+        print data
 
 class EchoFactory(protocol.Factory):
     def buildProtocol(self, addr):
         return Echo()
-
-
 
 ##########################################
 
@@ -50,5 +36,3 @@ if __name__ == '__main__':
     
     reactor.listenTCP(PORT, EchoFactory())
     reactor.run()
-
-    print 'Server listening on port ' + str(PORT)
