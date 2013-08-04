@@ -50,16 +50,6 @@ class ChatServer(object):
         host, name = info[0][0], info[1]
         return '@'.join((name, host))
 
-    def safeRemoveClient(self, client):
-        startList = self.outputs
-        newList = []
-        print '############# SAFE REMOVE ############'
-        for i in startList:
-            if i != client:
-                newList.append(i)
-        if len(newList) == len(startList) or len(newList) == len(startList) - 1:
-            self.outputs = newList
-
     def broadcast(self, msg):
         for o in self.outputs:
             send(o, msg)
@@ -103,9 +93,8 @@ class ChatServer(object):
                     self.clientmap[client] = (address, cname)
                     # Send joining information to other clients
                     msg = '\n(Connected: New client (%d) from %s)' % (self.clients, self.getname(client))
-                    if msg.find('sshProcessor') == -1:
-                        for o in self.outputs:
-                            send(o, msg)
+                    for o in self.outputs:
+                        send(o, msg)
                     
                     self.outputs.append(client)
 
@@ -115,10 +104,9 @@ class ChatServer(object):
                 else:
                     # handle all other sockets
                     try:
-                        # data = s.recv(BUFSIZ)
                         data = receive(s)
 
-                        print 'handling stuff ', data
+                        print 'New data being processed: ', data
 
                         if data[:9] == 'conServer':
 
@@ -175,37 +163,27 @@ class ChatServer(object):
                             msg = '\n#[' + name[0] + ']>> ' + data
                             for o in self.outputs:
                                 if o != s:
-                                    print 'BROARDCAST fired at ', self.getname(o)
                                     send(o, msg)
-                                else:
-                                    print 'Not fired at ', self.getname(o)
                                 time.sleep(0.1)
 
                         else:
-                            self.printClients()
                             print '\nchatserver: %s hung up\n' % self.getname(s)
 
                             self.clients -= 1
-                            print 'INPUTS', inputs
                             inputs.remove(s)
-                            print 'INPUTS', inputs
 
-                            print '\n', 'OUTPUTS', self.outputs
-#################################################### THIS IS THE BUGGER HERE, DOUBLE REMOVING SERVERS.
-                            #self.outputs.remove(s)
-                            self.safeRemoveClient(s)
-                            print 'OUTPUTS', self.outputs, '\n'
+                            self.outputs.remove(s)
 
                             s.close()
-                            self.printClients()
 
                             # Send client leaving information to others
                             msg = '\n(Hung up: Client from %s)' % self.getname(s)
-                            if msg.find('sshProcessor') == -1:
-                                for o in self.outputs:
-                                    send(o, msg)
+                            for o in self.outputs:
+                                send(o, msg)
                                 
                     except socket.error, e:
+                        print '\n ======== Socket Error ======='
+                        print e, self.getname(s), '\n'
                         # Remove
                         inputs.remove(s)
                         self.outputs.remove(s)

@@ -22,7 +22,7 @@ def setServerLookup(newServerLookup):
     serverLookup = newServerLookup
 
 def initSshConnection(serverLookup, sshId, sshPort, sshUser, sshIp):
-    shell = spur.SshShell(hostname=sshIp, username=sshUser, private_key_file="/home/admin/.ssh/id_rsa", port=sshPort)
+    shell = spur.SshShell(hostname=sshIp, username=sshUser, private_key_file="/home/alexj/.ssh/id_rsa", port=sshPort)
     serverLookup[sshId] = shell
     return serverLookup
 
@@ -153,21 +153,25 @@ class ChatClient(object):
             
             
 if __name__ == "__main__":
-    setServerLookup(initSshConnection(serverLookup, 'Porky', 2992, 'admin', '95.128.218.36'))
-    setServerLookup(initSshConnection(serverLookup, 'Twiki', 2992, 'admin', '95.128.218.37'))
-    setServerLookup(initSshConnection(serverLookup, 'Max', 2992, 'admin', '95.128.218.38'))
-    setServerLookup(initSshConnection(serverLookup, 'Kryton', 2992, 'admin', '95.128.218.39'))
+    #setServerLookup(initSshConnection(serverLookup, 'Porky', 2992, 'admin', '95.128.218.36'))
+    #setServerLookup(initSshConnection(serverLookup, 'Twiki', 2992, 'admin', '95.128.218.37'))
+    #setServerLookup(initSshConnection(serverLookup, 'Max', 2992, 'admin', '95.128.218.38'))
+    #setServerLookup(initSshConnection(serverLookup, 'Kryton', 2992, 'admin', '95.128.218.39'))
 
-    setServerLookup(initSshConnection(serverLookup, 'QA1', 2992, 'admin', '95.128.218.47'))
-    setServerLookup(initSshConnection(serverLookup, 'QA2', 2992, 'admin', '95.128.218.48'))
-    setServerLookup(initSshConnection(serverLookup, 'QA4', 2992, 'admin', '95.128.218.45'))
+    #setServerLookup(initSshConnection(serverLookup, 'QA1', 2992, 'admin', '95.128.218.47'))
+    #setServerLookup(initSshConnection(serverLookup, 'QA2', 2992, 'admin', '95.128.218.48'))
+    #setServerLookup(initSshConnection(serverLookup, 'QA4', 2992, 'admin', '95.128.218.45'))
 
-    setServerLookup(initSshConnection(serverLookup, 'Q9MaS1', 2992, 'mkadmin', '10.112.4.20'))
-    setServerLookup(initSshConnection(serverLookup, 'Q9MaS2', 2992, 'mkadmin', '10.112.4.30'))
+    #setServerLookup(initSshConnection(serverLookup, 'Q9MaS1', 2992, 'mkadmin', '10.112.4.20'))
+    #setServerLookup(initSshConnection(serverLookup, 'Q9MaS2', 2992, 'mkadmin', '10.112.4.30'))
 
-    setServerLookup(initSshConnection(serverLookup, 'Ash', 2992, 'admin', '95.128.219.176'))
-    setServerLookup(initSshConnection(serverLookup, 'Ember', 2992, 'admin', '95.128.219.164'))
+    #setServerLookup(initSshConnection(serverLookup, 'Ash', 2992, 'admin', '95.128.219.176'))
+    #setServerLookup(initSshConnection(serverLookup, 'Ember', 2992, 'admin', '95.128.219.164'))
 
+    setServerLookup(initSshConnection(serverLookup, 'Alex', 22, 'alexj', '127.0.0.1'))
+    setServerLookup(initSshConnection(serverLookup, 'Blex', 22, 'alexj', '127.0.0.1'))
+    setServerLookup(initSshConnection(serverLookup, 'Clex', 22, 'alexj', '127.0.0.1'))
+    setServerLookup(initSshConnection(serverLookup, 'Dlex', 22, 'alexj', '127.0.0.1'))
 
     client = ChatClient('sshDaemon', '127.0.0.1', 5153)
     setClientObj(client)

@@ -1,0 +1,168 @@
+Traceback (most recent call last):
+  File "./sshDaemon.py", line 3, in <module>
+    import spur
+  File "/usr/lib/python2.7/site-packages/spur-0.3.5-py2.7.egg/spur/__init__.py", line 2, in <module>
+    from spur.ssh import SshShell
+  File "/usr/lib/python2.7/site-packages/spur-0.3.5-py2.7.egg/spur/ssh.py", line 10, in <module>
+    import paramiko
+  File "/usr/lib/python2.7/site-packages/paramiko-1.11.0-py2.7.egg/paramiko/__init__.py", line 64, in <module>
+    from transport import SecurityOptions, Transport
+  File "/usr/lib/python2.7/site-packages/paramiko-1.11.0-py2.7.egg/paramiko/transport.py", line 33, in <module>
+    from paramiko import util
+  File "/usr/lib/python2.7/site-packages/paramiko-1.11.0-py2.7.egg/paramiko/util.py", line 33, in <module>
+    from paramiko.common import *
+  File "/usr/lib/python2.7/site-packages/paramiko-1.11.0-py2.7.egg/paramiko/common.py", line 98, in <module>
+    from Crypto import Random
+ImportError: No module named Crypto
+['ls']
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/threading.py", line 811, in __bootstrap_inner
+    self.run()
+  File "/usr/lib64/python2.7/threading.py", line 764, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "./sshDaemon.py", line 44, in doStuff
+    response = serverObj.run(newList).output
+  File "/usr/lib/python2.7/site-packages/spur-0.3.5-py2.7.egg/spur/ssh.py", line 70, in run
+    return self.spawn(*args, **kwargs).wait_for_result()
+  File "/usr/lib/python2.7/site-packages/spur-0.3.5-py2.7.egg/spur/ssh.py", line 80, in spawn
+    channel = self._get_ssh_transport().open_session()
+  File "/usr/lib/python2.7/site-packages/spur-0.3.5-py2.7.egg/spur/ssh.py", line 176, in _get_ssh_transport
+    return self._connect_ssh().get_transport()
+  File "/usr/lib/python2.7/site-packages/spur-0.3.5-py2.7.egg/spur/ssh.py", line 193, in _connect_ssh
+    timeout=self._connect_timeout
+  File "/usr/lib/python2.7/site-packages/paramiko-1.11.0-py2.7.egg/paramiko/client.py", line 342, in connect
+    self._auth(username, password, pkey, key_filenames, allow_agent, look_for_keys)
+  File "/usr/lib/python2.7/site-packages/paramiko-1.11.0-py2.7.egg/paramiko/client.py", line 462, in _auth
+    key = pkey_class.from_private_key_file(key_filename, password)
+  File "/usr/lib/python2.7/site-packages/paramiko-1.11.0-py2.7.egg/paramiko/pkey.py", line 198, in from_private_key_file
+    key = cls(filename=filename, password=password)
+  File "/usr/lib/python2.7/site-packages/paramiko-1.11.0-py2.7.egg/paramiko/rsakey.py", line 51, in __init__
+    self._from_private_key_file(filename, password)
+  File "/usr/lib/python2.7/site-packages/paramiko-1.11.0-py2.7.egg/paramiko/rsakey.py", line 163, in _from_private_key_file
+    data = self._read_private_key_file('RSA', filename, password)
+  File "/usr/lib/python2.7/site-packages/paramiko-1.11.0-py2.7.egg/paramiko/pkey.py", line 279, in _read_private_key_file
+    f = open(filename, 'r')
+IOError: [Errno 2] No such file or directory: '/home/admin/.ssh/id_rsa'
+
+SshDaemon Shutting down.
+['ls']
+Trying to return to Alex
+SshDaemon Shutting down.
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Alex
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Blex
+['curl', '-k', 'http://www.google.com/mobile/other/']
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Clex
+Trying to return to Dlex
+Traceback (most recent call last):
+  File "./sshDaemon.py", line 178, in <module>
+    client.cmdloop()
+  File "./sshDaemon.py", line 100, in cmdloop
+    data = receive(self.sock)
+  File "/home/alexj/Documents/sandbox/new/cSOS/communication.py", line 21, in receive
+    size = channel.recv(size)
+socket.error: [Errno 104] Connection reset by peer
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Alex
+['curl', '-k', 'http://www.google.com/mobile/other/']
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Blex
+Trying to return to Clex
+SshDaemon Shutting down.
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Alex
+['curl', '-k', 'http://www.google.com/mobile/other/']
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Blex
+Trying to return to Clex
+Traceback (most recent call last):
+  File "./sshDaemon.py", line 178, in <module>
+    client.cmdloop()
+  File "./sshDaemon.py", line 100, in cmdloop
+    data = receive(self.sock)
+  File "/home/alexj/Documents/sandbox/new/cSOS/communication.py", line 21, in receive
+    size = channel.recv(size)
+socket.error: [Errno 104] Connection reset by peer
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Alex
+['curl', '-k', 'http://www.google.com/mobile/other/']
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Blex
+Trying to return to Clex
+SshDaemon Shutting down.
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Alex
+['curl', '-k', 'http://www.google.com/mobile/other/']
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Blex
+Trying to return to Clex
+SshDaemon Shutting down.
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Alex
+['curl', '-k', 'http://www.google.com/mobile/other/']
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Blex
+Trying to return to Clex
+SshDaemon Shutting down.
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Alex
+['curl', '-k', 'http://www.google.com/mobile/other/']
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Blex
+Trying to return to Clex
+Traceback (most recent call last):
+  File "./sshDaemon.py", line 178, in <module>
+    client.cmdloop()
+  File "./sshDaemon.py", line 100, in cmdloop
+    data = receive(self.sock)
+  File "/home/alexj/Documents/sandbox/new/cSOS/communication.py", line 21, in receive
+    size = channel.recv(size)
+socket.error: [Errno 104] Connection reset by peer
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Alex
+['curl', '-k', 'http://www.google.com/mobile/other/']
+['curl', '-k', 'http://www.google.com/mobile/other/']
+Trying to return to Blex
+Trying to return to Clex
+Traceback (most recent call last):
+  File "./sshDaemon.py", line 178, in <module>
+    client.cmdloop()
+  File "./sshDaemon.py", line 100, in cmdloop
+    data = receive(self.sock)
+  File "/home/alexj/Documents/sandbox/new/cSOS/communication.py", line 21, in receive
+    size = channel.recv(size)
+socket.error: [Errno 104] Connection reset by peer
+['ls']
+Trying to return to Alex
+['ls']
+Trying to return to Alex
+['ls']
+Trying to return to Alex
+['ls']
+Trying to return to Alex
+['ls']
+Trying to return to Alex
+['ls']
+Trying to return to Alex
+['ls']
+Trying to return to Alex
+['ls']
+Trying to return to Alex
+['ls']
+Trying to return to Alex
+SshDaemon Shutting down.
+['ls']
+Trying to return to Alex
+SshDaemon Shutting down.
+['ls']
+Trying to return to Alex
+SshDaemon Shutting down.
+['ls']
+Trying to return to Alex
+['ls']
+Trying to return to Alex
+['ls']
+Trying to return to Alex
