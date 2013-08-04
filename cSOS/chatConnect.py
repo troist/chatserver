@@ -77,6 +77,14 @@ class ChatClient(object):
                                     gotResponse = True
                                     break
 
+                            if message == 'sshDaemon ping':
+
+                                if newData[0] == '#[sshDaemon]' and newData[1] == 'ok':
+
+                                    gotResponse = True
+                                    self.sock.close()
+                                    break
+
             except KeyboardInterrupt:
 
                 print 'Interrupted.'
@@ -87,7 +95,8 @@ class ChatClient(object):
             
 
 def getClientObj(commandToRun):
-    client = ChatClient('sshProcessor', '127.0.0.1', 5153)
+    splitString = commandToRun.split(' ')
+    client = ChatClient('sshProcessor' + splitString[2], '127.0.0.1', 5153)
     return client.cmdloop(commandToRun)
             
 if __name__ == "__main__":
